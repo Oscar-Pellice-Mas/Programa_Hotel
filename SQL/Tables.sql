@@ -34,8 +34,8 @@ create table Issues(
     `priority` int(11),
     `date` date not null,
     primary key (`id`),
-    foreign key (`id_hotel`) from ...,
-    foreign key (`reporter_id`) from ...
+    foreign key (`id_hotel`) references Hotel (`id`),
+    foreign key (`reporter_id`) references Users (`id`),
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 drop table if exists Materials;
@@ -54,8 +54,8 @@ create table MaterialsUsed(
     `id_material` int(11) NOT NULL,
     `quantity` int(11) NOT NULL,
     primary key (`id_issue`, `id_material`),
-    foreign key (`id_issue`) FROM ... ,
-    foreign key (`id_material`) FROM ...
+    foreign key (`id_issue`) references Issues (`id`),
+    foreign key (`id_material`) references Materials (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 drop table if exists MaterialsRequired;
@@ -64,8 +64,8 @@ create table MaterialsRequired(
     `id_material` int(11) NOT NULL,
     `quantity` int(11) NOT NULL,
     primary key (`id_issue`, `id_material`),
-    foreign key (`id_issue`) FROM ... ,
-    foreign key (`id_material`) FROM ...
+    foreign key (`id_issue`) references Issues (`id`),
+    foreign key (`id_material`) references Materials (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 drop table if exists Revision;
@@ -76,7 +76,7 @@ create table Revision(
     `date` date not null,
     `picture` VARCHAR(255) NOT NULL DEFAULT '',
     `next` date,
-     primary key (`id`)
+    primary key (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 drop table if exists Upgrades;
@@ -90,5 +90,5 @@ create table Upgrades(
     `status` int(11) NOT NULL DEFAULT 0,
     `room` VARCHAR(255) NOT NULL DEFAULT '',
     `picture` VARCHAR(255) NOT NULL DEFAULT '',
-     primary key (`id`)
+    primary key (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
