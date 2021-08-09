@@ -12,7 +12,7 @@ drop table if exists user cascade;
 drop table if exists hotel cascade;
 
 create table hotel(
-    `id` VARCHAR(255) NOT NULL DEFAULT '',
+    `id` VARCHAR(255),
     `name` VARCHAR(255) NOT NULL DEFAULT '',
     `mail` VARCHAR(255) NOT NULL DEFAULT '',
     `phone` VARCHAR(255) NOT NULL DEFAULT '',
@@ -20,7 +20,7 @@ create table hotel(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table user(
-    `id` VARCHAR(128) NOT NULL DEFAULT '',
+    `id` VARCHAR(128),
     `password` VARCHAR(255) NOT NULL DEFAULT '',
     `name` VARCHAR(255) NOT NULL DEFAULT '',
     `role` int(11),
@@ -50,11 +50,13 @@ create table issue(
 
 create table material(
     `id` VARCHAR(128) NOT NULL DEFAULT '',
+    `id_hotel` VARCHAR(128) NOT NULL DEFAULT '',
     `name` VARCHAR(255) NOT NULL DEFAULT '',
     `quantity` int(11) not null default 0,
     `price` float not null default 0.0,
     `average` text, -- es guarda preu mitja
-    primary key (`id`)
+    primary key (`id`),
+    foreign key (`id_hotel`) references hotel (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table material_used(
