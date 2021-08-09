@@ -79,12 +79,14 @@ create table material_required(
 
 create table revision(
     `id` VARCHAR(128) NOT NULL DEFAULT '',
+    `id_hotel` VARCHAR(128) NOT NULL DEFAULT '',
     `title` VARCHAR(255) NOT NULL DEFAULT '',
     `description` int(11) not null default 0,
     `date` date not null,
     `picture` VARCHAR(255) NOT NULL DEFAULT '',
     `next` date,
-    primary key (`id`)
+    primary key (`id`),
+	foreign key (`id_hotel`) references hotel (`id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table upgrade(
@@ -147,10 +149,9 @@ CREATE TRIGGER before_insert_material
 BEFORE INSERT ON material
 FOR EACH ROW
 BEGIN
-  IF new.id IS NULL
-	THEN
-		SET new.id = uuid();
-  END IF ;
+
+    SET new.id = uuid();
+
 END;//
 delimiter ;
 
@@ -160,10 +161,7 @@ CREATE TRIGGER before_insert_revision
 BEFORE INSERT ON revision
 FOR EACH ROW
 BEGIN
-  IF new.id IS NULL
-	THEN
-		SET new.id = uuid();
-  END IF ;
+    SET new.id = uuid();
 END;//
 delimiter ;
 
