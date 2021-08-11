@@ -110,10 +110,7 @@ CREATE TRIGGER before_insert_user
 BEFORE INSERT ON user
 FOR EACH ROW
 BEGIN
-  IF new.id IS NULL
-	THEN
-		SET new.id = uuid();
-  END IF ;
+    SET new.id = uuid();
 END;//
 delimiter ;
 
@@ -123,10 +120,7 @@ CREATE TRIGGER before_insert_hotel
 BEFORE INSERT ON hotel
 FOR EACH ROW
 BEGIN
-  IF new.id IS NULL
-	THEN
-		SET new.id = uuid();
-  END IF ;
+    SET new.id = uuid();
 END;//
 delimiter ;
 
@@ -136,10 +130,7 @@ CREATE TRIGGER before_insert_issue
 BEFORE INSERT ON issue
 FOR EACH ROW
 BEGIN
-  IF new.id IS NULL
-	THEN
-		SET new.id = uuid();
-  END IF ;
+    SET new.id = uuid();
 END;//
 delimiter ;
 
@@ -149,9 +140,7 @@ CREATE TRIGGER before_insert_material
 BEFORE INSERT ON material
 FOR EACH ROW
 BEGIN
-
     SET new.id = uuid();
-
 END;//
 delimiter ;
 
@@ -171,10 +160,7 @@ CREATE TRIGGER before_insert_upgrade
 BEFORE INSERT ON upgrade
 FOR EACH ROW
 BEGIN
-  IF new.id IS NULL
-	THEN
-		SET new.id = uuid();
-  END IF ;
+    SET new.id = uuid();
 END;//
 delimiter ;
 
