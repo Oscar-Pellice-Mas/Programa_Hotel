@@ -81,7 +81,7 @@ create table revision(
     `id` VARCHAR(128) NOT NULL DEFAULT '',
     `id_hotel` VARCHAR(128) NOT NULL DEFAULT '',
     `title` VARCHAR(255) NOT NULL DEFAULT '',
-    `description` int(11) not null default 0,
+    `description` text,
     `date` date not null,
     `picture` VARCHAR(255) NOT NULL DEFAULT '',
     `next` date,
