@@ -1,6 +1,7 @@
-import React from "react";
-import { FetchIsues } from "./issues/FetchIsues";
+import FetchIsues from "./issues/FetchIsues";
 
-export function App() {
+function App() {
   return (<div><FetchIsues /></div>);
 }
+
+export default App;

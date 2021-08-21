@@ -1,7 +1,6 @@
-import React from 'react'
-import { Issue } from './Issue'
+import Issue from './Issue'
 
-export function IssuesList({ issues }) {
+function IssuesList({ issues }) {
     if (typeof issues[0] == 'undefined') return <ul></ul>
 
     return (
@@ -12,3 +11,5 @@ export function IssuesList({ issues }) {
         </ul>
     )
 }
+
+export default IssuesList;
