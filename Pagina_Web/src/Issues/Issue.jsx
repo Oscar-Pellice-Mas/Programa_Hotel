@@ -1,5 +1,3 @@
-import './issue.css'
-
 function Issue({ issue }) {
     const {title, room, reporter, priority, status, description} = issue;
 
