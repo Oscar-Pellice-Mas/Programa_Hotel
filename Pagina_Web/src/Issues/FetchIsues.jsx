@@ -1,19 +1,20 @@
-import { useState } from "react";
 import IssuesList from './IssuesList';
-import { getAllIssues, postIssue } from '../services/Issues'
+import useFetch from '../services/Generic'
 
 function FetchIsues() {
-    const [issues, setIssues] = useState([]);
+    const { data: issues, isPending, error } = useFetch('/issues');
 
-    getAllIssues().then( data => {
-        if (!issues.length) {
-            setIssues((prevIssues) => {
-                return[...prevIssues, data]
-            });
-        }
-    });
+    return (
+        <div className="issue-list">
+            { isPending && <p>Loading...</p> }
+            { issues && <IssuesList issues={issues.lead}/> }
+        </div>
+    );
+}
 
-    // var data = [{"issue":{
+export default FetchIsues;
+
+// var data = [{"issue":{
     //     "id_hotel": "0f1c446d-f92e-11eb-a416-020000fcbc46",
     //     "room": "testRoom4",
     //     "title": "titletest4",
@@ -27,12 +28,3 @@ function FetchIsues() {
     //     "date": "testdate3"
     // }}];
     // postIssue(data).then(console.log("d"));
-
-    if (!issues.length) {
-        return <p>Loading...</p>
-    } else {
-        return <IssuesList issues={issues}/>;
-    }
-}
-
-export default FetchIsues;

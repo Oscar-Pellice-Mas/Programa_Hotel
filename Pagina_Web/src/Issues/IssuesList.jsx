@@ -1,11 +1,11 @@
 import Issue from './Issue'
 
-function IssuesList({ issues }) {
-    if (typeof issues[0] == 'undefined') return <ul></ul>
+const IssuesList = ({ issues }) => {
+    if (typeof issues == 'undefined') return <ul></ul>
 
     return (
         <ul>
-            {issues[0].lead.map((newIssue) => (
+            {issues.map((newIssue) => (
                 <Issue key={newIssue.id} issue={newIssue}/>
             ))}
         </ul>

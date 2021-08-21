@@ -1,4 +1,4 @@
-function Issue({ issue }) {
+const Issue = ({ issue }) => {
     const {title, room, reporter, priority, status, description} = issue;
 
     return (
