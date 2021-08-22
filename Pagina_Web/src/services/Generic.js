@@ -1,6 +1,6 @@
-//TODO: modificar esto dinamicamente
 import { useState, useEffect } from "react";
 
+//TODO: modificar esto dinamicamente
 const id_hotel = "0f1c446d-f92e-11eb-a416-020000fcbc46";
 const id_reporter = "26ac1d7c-f92e-11eb-a416-020000fcbc46";
 
@@ -11,7 +11,9 @@ const useFetch = (url) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(url)
+        const abortCont = new AbortController();
+
+        fetch(url, { signal: abortCont.signal })
             .then(res => {
                 if(!res.ok) throw Error('error fetching data');
                 return res.json();
@@ -22,9 +24,13 @@ const useFetch = (url) => {
                 setError(null);
             })
             .catch( err => {
-                setIsPending(false);
-                setError(err.message);                
+                if (err.name !== 'AbortError') {
+                    setIsPending(false);
+                    setError(err.message); 
+                }           
             });
+
+        return () => abortCont.abort();
     }, [url])
 
     return { data, isPending, error };
