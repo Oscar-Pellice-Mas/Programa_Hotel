@@ -1,13 +1,15 @@
 import FetchIsues from "./Issues/FetchIsues";
-import Navbar from "./Navbar";
+import Navbar from "./Common/Navbar";
 import Home from "./Home";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import LogIn from "./Common/LogIn";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Navbar />
+        <LogIn />
         <div className="content">
           <Switch>
             <Route exact path="/">
