@@ -1,0 +1,19 @@
+p {
+    margin-right: 3%;
+    padding-right: 6%;
+    padding-left: 1%;
+    background-color: #A18989;
+}
+
+img {
+    margin-right: 5%;
+}
+
+.login {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-end;
+    align-items: center;
+}

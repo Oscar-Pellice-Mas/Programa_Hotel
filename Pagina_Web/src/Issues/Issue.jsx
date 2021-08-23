@@ -1,7 +1,4 @@
-import React from 'react'
-import './issue.css'
-
-export function Issue({ issue }) {
+const Issue = ({ issue }) => {
     const {title, room, reporter, priority, status, description} = issue;
 
     return (
@@ -17,3 +14,5 @@ export function Issue({ issue }) {
         </li>
     )
 }
+
+export default Issue;

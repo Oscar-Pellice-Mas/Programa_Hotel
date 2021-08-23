@@ -1,3 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Ranga&display=swap');
+
+* {
+    font-family: 'Ranga', cursive;
+    margin: 0px;
+}
+
 html {
-    background-color: aqua;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+#root {
+    height: 100%;
+}
+
+.App {
+    background-color: #C4C4C4;
+    margin: 0px;
+    height: 100%;
+    display: grid;
+    grid-gap: 1%;
+    grid-template-columns: 15% 84%;
+    grid-template-rows: 13% 86%;
+    grid-template-areas:
+        "nav login"
+        "nav content";
+}
+
+.navbar {
+    background-color: #A7A7A7;
+    flex-direction: column;
+    grid-area: nav;
+}
+
+.content {
+    grid-area: content;
+}
+
+.login {
+    grid-area: login;
 }
