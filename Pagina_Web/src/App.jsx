@@ -7,10 +7,10 @@ import LogIn from "./Common/LogIn";
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="bg-customClearGrey grid grid-cols-5 grid-rows-7 auto-cols-fr h-screen">
         <Navbar />
         <LogIn />
-        <div className="content">
+        <div className="row-span-6 col-span-4">
           <Switch>
             <Route exact path="/">
               <Home />
