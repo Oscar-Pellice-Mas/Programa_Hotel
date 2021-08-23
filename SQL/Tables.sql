@@ -94,7 +94,7 @@ create table upgrade(
     `title` VARCHAR(255) NOT NULL DEFAULT '',
     `id_hotel` VARCHAR(128) NOT NULL DEFAULT '',
     `id_reporter` VARCHAR(128) NOT NULL DEFAULT '',
-    `description` int(11) not null default 0,
+    `description` text,
     `date` date not null,
     `status` int(11) NOT NULL DEFAULT 0,
     `room` VARCHAR(255) NOT NULL DEFAULT '',
