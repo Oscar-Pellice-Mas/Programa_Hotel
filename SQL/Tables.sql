@@ -10,6 +10,7 @@ drop table if exists upgrade cascade;
 drop table if exists issue cascade;
 drop table if exists user cascade;
 drop table if exists hotel cascade;
+drop table if exists average cascade;
 
 create table hotel(
     `id` VARCHAR(255),
@@ -57,6 +58,15 @@ create table material(
     `average` text, -- es guarda preu mitja
     primary key (`id`),
     foreign key (`id_hotel`) references hotel (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table average(
+    `id` int(11) not null primary key auto_increment,
+    `id_hotel` VARCHAR(128) NOT NULL DEFAULT '',
+    `id_material` VARCHAR(128) NOT NULL DEFAULT '',
+    `price` float,
+    `quantity` integer,
+    `created_at` datetime not null default now()
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table material_used(
@@ -141,6 +151,30 @@ BEFORE INSERT ON material
 FOR EACH ROW
 BEGIN
     SET new.id = uuid();
+    insert into average(id_hotel, id_material, price, quantity, created_at)
+    values (new.id_hotel, new.id, new.price, new.quantity, now());
+END;//
+delimiter ;
+
+delimiter //
+DROP TRIGGER IF EXISTS update_material_average//
+CREATE TRIGGER update_material_average
+BEFORE UPDATE ON material
+FOR EACH ROW
+BEGIN
+
+    declare id_last_price integer;
+
+    IF old.price != new.price then
+        insert into average(id_hotel, id_material, price, quantity)
+        values (old.id_hotel, old.id, new.price, new.quantity - old.quantity);
+    else
+        select id into id_last_price from average where old.id_hotel = average.id_hotel and old.id = average.id_material
+            order by average.created_at desc limit 1;
+        update average set average.quantity = average.quantity + (new.quantity - old.quantity)
+        where average.id = id_last_price;
+    end if;
+
 END;//
 delimiter ;
 
@@ -163,4 +197,5 @@ BEGIN
     SET new.id = uuid();
 END;//
 delimiter ;
+
 
