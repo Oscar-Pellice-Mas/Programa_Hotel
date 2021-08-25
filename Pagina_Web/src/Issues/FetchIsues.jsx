@@ -1,4 +1,4 @@
-import IssuesList from './IssuesList';
+import IssuesList from '../Home/IssuesList';
 import useFetch from '../services/Generic'
 
 function FetchIsues() {
@@ -13,18 +13,3 @@ function FetchIsues() {
 }
 
 export default FetchIsues;
-
-// var data = [{"issue":{
-    //     "id_hotel": "0f1c446d-f92e-11eb-a416-020000fcbc46",
-    //     "room": "testRoom4",
-    //     "title": "titletest4",
-    //     "description": "descriptiontest4",
-    //     "picture": "urltest4",
-    //     "status": 0,
-    //     "id_reporter": "26ac1d7c-f92e-11eb-a416-020000fcbc46",
-    //     "category": "cattest4",
-    //     "subcategory": "subcategorytest4",
-    //     "priority": 0,
-    //     "date": "testdate3"
-    // }}];
-    // postIssue(data).then(console.log("d"));

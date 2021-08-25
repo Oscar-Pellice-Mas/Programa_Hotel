@@ -37,7 +37,7 @@ const useFetch = (url) => {
 }
 
 export async function postIssue(data) {
-    const url = "/issues/new"
+    const url = "/materials/new"
     const response = await fetch(url, {
         method: 'POST',
         headers: { "Content-Type": "application/json"},

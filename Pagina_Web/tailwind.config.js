@@ -84,6 +84,8 @@ module.exports = {
       ...theme('colors'),
       'customDarkGrey': '#8b8888',
       'customClearGrey': '#C4C4C4',
+      'customGrey': '#A7A7A7',
+      'customDarkRed': '#615959',
       'userRed': '#A18989'}),
     backgroundImage: {
       none: 'none',

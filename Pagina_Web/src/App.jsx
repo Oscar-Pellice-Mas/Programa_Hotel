@@ -1,22 +1,23 @@
 import FetchIsues from "./Issues/FetchIsues";
 import Navbar from "./Common/Navbar";
-import Home from "./Home";
+import Home from "./Home/Home";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LogIn from "./Common/LogIn";
+import NewIssue from "./Issues/NewIssue";
 
 function App() {
   return (
     <Router>
-      <div className="bg-customClearGrey grid grid-cols-5 grid-rows-7 auto-cols-fr h-screen">
+      <div className="bg-customClearGrey grid grid-cols-5 grid-rows-6 auto-cols-fr h-screen">
         <Navbar />
         <LogIn />
-        <div className="row-span-6 col-span-4">
+        <div className="row-span-5 col-span-4">
           <Switch>
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/issues">
-              <FetchIsues />
+            <Route exact path="/newIssue">
+              <NewIssue />
             </Route>
           </Switch>
         </div>
