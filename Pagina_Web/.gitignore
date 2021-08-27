@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#package.json
+Pagina_Web/package.json
+Pagina_Web/package-lock.json
