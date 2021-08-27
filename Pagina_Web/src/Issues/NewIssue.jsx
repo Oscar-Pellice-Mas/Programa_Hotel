@@ -10,10 +10,9 @@ const NewIssue = () => {
     // }];
     // postIssue(data).then(console.log("d"));
 
+
     return ( 
         <div>
-            <p>Hi</p>
-            
         </div>
      );
 }
