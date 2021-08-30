@@ -6,16 +6,16 @@ const NewIssueView = () => {
 
     var buttonStyle = "";
     if(submitState == 1){
-        buttonStyle = "bg-customGrey py-3 px-10 mt-5 w-min text-xl text-white rounded-xl";
+        buttonStyle = "bg-customGrey py-3 px-10 mt-5 w-min text-xl text-white rounded-xl duration-500 ring-blue-600";
     } else if (submitState == 2){
-        buttonStyle = "bg-customClearGrey py-3 px-10 mt-5 w-min text-xl text-white rounded-xl";
+        buttonStyle = "bg-customClearGrey py-3 px-10 mt-5 w-min text-xl text-white rounded-xl ease-in";
     } else {
         buttonStyle = "bg-gray-500 py-3 px-10 mt-5 w-min text-xl text-white rounded-xl";
     }
 
     return ( 
         <div className="flex flex-col">
-            <form action="" method="post">
+            <form action="" method="">
                 <div className="bg-customDarkGrey mx-7 text-3xl h-full flex-row w-1/5 justify-center">
                     <input type="text" class="bg-customDarkGrey py-2 px-4 w-96 outline-none placeholder-gray-300 focus:ring-2 focus:ring-indigo-400 rounded" placeholder="Nom incidència" />
                 </div>
