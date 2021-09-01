@@ -1,4 +1,4 @@
-import FetchIsues from "./Issues/FetchIsues";
+import FetchIsues from "./Issues/FetchIssues";
 import Navbar from "./Common/Navbar";
 import Home from "./Home/Home";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
