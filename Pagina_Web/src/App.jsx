@@ -1,10 +1,8 @@
-import FetchIsues from "./Issues/FetchIssues";
 import Navbar from "./Common/Navbar";
 import Home from "./Home/Home";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LogIn from "./Common/LogIn";
-import NewIssueView from "./Home/NewIssueView";
-import NewIssue from "./Issues/NewIssue";
+import NewIssueView from "./Issues/NewIssueView";
 
 function App() {
   return (

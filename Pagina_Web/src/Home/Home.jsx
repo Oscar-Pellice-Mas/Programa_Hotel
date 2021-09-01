@@ -23,17 +23,17 @@ const Home = () => {
                 <h2 className="bg-customDarkGrey text-5xl py-5 pl-5">Historial</h2>
             </div>
             <div className="bg-customDarkRed h-4/5 w-5/12 mx-10 grid grid-cols-1 grid-rows-3">
-                <div className="bg-customClearGrey mx-5 mt-5 mb-2.5">
+                <div className="bg-customClearGrey mx-5 mt-5 mb-2.5 overflow-auto">
                     <h3 className="pl-3 pt-3 pb-1.5">Molt Urgent</h3>
                     { isPending && <p className="pl-3">Loading...</p> }
                     { mU && <IssuesList issues={ mU }/> }
                 </div>
-                <div className="bg-customClearGrey mx-5 my-2.5">
+                <div className="bg-customClearGrey mx-5 my-2.5 overflow-auto">
                     <h3 className="pl-3 pt-3 pb-1.5">Urgent</h3>
                     { isPending && <p className="pl-3">Loading...</p> }
                     { u && <IssuesList issues={ u }/> }
                 </div>
-                <div className="bg-customClearGrey mx-5 mb-5 mt-2.5">
+                <div className="bg-customClearGrey mx-5 mb-5 mt-2.5 overflow-auto">
                     <h3 className="pl-3 pt-3 pb-1.5">No Urgent</h3>
                     { isPending && <p className="pl-3">Loading...</p> }
                     { nU && <IssuesList issues={ nU }/> }

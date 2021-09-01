@@ -15,18 +15,25 @@ const NewIssueView = () => {
     const handleSubmit = (event) => {
         event.preventDefault(); // Evitamos refresh
 
-        const newIssue = {title, room, reporter:'Juancho', priority, status:'pending', description, isBusy, visual_id: 1}; // Construimos el issue
+        const currTime = Date.now();
+        const newIssue = {title, room, priority, status: 0, description, isBusy, 
+        id_reporter: "94f1bbad-067f-11ec-a416-020000fcbc46", id_hotel: "623fbf6c-067f-11ec-a416-020000fcbc46",
+        picture: "urlpic", category: "cat", subcategory: "subcat", date: currTime.toString()}; // Construimos el issue
+
+        const issueSend = {issue: newIssue} // Añadimos la palabra issue: para la peticion
         console.log(newIssue);
 
-        fetch('http://localhost:3006/newIssue', { // Creamos peticion POST
+        
+        fetch('/issues/new', { // Creamos peticion POST
             method: 'POST',
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(newIssue)
+            body: JSON.stringify(issueSend)
         }).then(() => {
-            console.log('incidencia creada!');
+            console.log('incidencia creada!'); // TODO Aqui comprobaremos si se ha realizado correctamente
             setIsPending(false);
         });
     }
+    // TODO Falta añadir campos y controlar errores
 
     return ( 
         <div className="flex flex-col">
