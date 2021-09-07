@@ -1,26 +1,38 @@
 import useFetch from '../services/Generic'
 import { useState, useEffect } from "react";
 import IssuesList from './IssuesList';
+import CommentsList from './CommentsList';
 
 const Home = () => {
     const { data: issues, isPending, error } = useFetch('/issues');
+    const { data: comment, isPending: comPending, error: errCom } = useFetch('/system/comments');
     const [nU, setnU] = useState(null);
     const [u, setU] = useState(null);
     const [mU, setmU] = useState(null);
+    const [comments, setComments] = useState(null);
+    const [doneFetchIss, setDoneFetchIss] = useState(false);
+    const [doneFetchCom, setDoneFetchCom] = useState(false);
 
     useEffect(() => {
-        if (!isPending && !error) {
+        if (!isPending && !error && !doneFetchIss) {
             setnU(issues?.lead.filter((issue) => issue.priority === 0));
             setU(issues?.lead.filter((issue) => issue.priority === 1));
-            setmU(issues?.lead.filter((issue) => issue.priority === 2));            
+            setmU(issues?.lead.filter((issue) => issue.priority === 2));
+            setDoneFetchIss(true);         
         }
-    }, [isPending]);
+        if (!comPending && !errCom && !doneFetchCom){
+            setComments(comment?.lead);
+            setDoneFetchCom(true); 
+        }
+    }, [isPending, comPending]);
 
     return ( 
         <div className="text-xl h-full flex flex-row w-full justify-center">
-            <div className="bg-customGrey h-4/5 w-5/12 mx-10">
-                <h2 className="bg-customDarkGrey text-5xl py-5 pl-5">Historial</h2>
-                { error && <p className="pl-3 text-red-700 text-3xl text-center mt-5">Ha ocorregut un error inesperat</p> }
+            <div className="bg-customGrey h-4/5 w-5/12 mx-10 overflow-auto overscroll-none">
+                <h2 className="bg-customDarkGrey text-5xl py-5 pl-5 sticky top-0 z-50">Historial</h2>
+                { comPending && <p className="pl-3 relative">Loading...</p> }
+                { comments && !errCom && <CommentsList comments={ comments }/> }
+                { errCom && <p className="pl-3 text-red-700 text-3xl text-center mt-5">Ha ocorregut un error inesperat</p> }
             </div>
             <div className="bg-customDarkRed h-4/5 w-5/12 mx-10 grid grid-cols-1 grid-rows-3">
                 <div className="bg-customClearGrey mx-5 mt-5 mb-2.5 overflow-auto overscroll-none">
