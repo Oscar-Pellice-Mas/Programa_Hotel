@@ -8,7 +8,7 @@ const Navbar = () => {
                 <Link className="hover:bg-customDarkGrey pl-6 py-3" to="/">Inici</Link>
                 <Link className="hover:bg-customDarkGrey pl-6 py-3" to="/newIssue">Nova incidencia</Link>
                 <Link className="hover:bg-customDarkGrey pl-6 py-3" to="/">Stock</Link>
-                <Link className="hover:bg-customDarkGrey pl-6 py-3" to="/">Historic</Link>
+                <Link className="hover:bg-customDarkGrey pl-6 py-3" to="/historic">Historic</Link>
                 <Link className="hover:bg-customDarkGrey pl-6 py-3" to="/">Gestionar Usuaris</Link>
                 <Link className="hover:bg-customDarkGrey pl-6 py-3" to="/">Maquinaria</Link>
                 <Link className="hover:bg-customDarkGrey pl-6 py-3" to="/">Configuració</Link>

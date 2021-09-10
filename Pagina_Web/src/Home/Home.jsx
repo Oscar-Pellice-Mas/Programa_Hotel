@@ -1,9 +1,11 @@
 import useFetch from '../services/Generic'
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 import IssuesList from './IssuesList';
 import CommentsList from './CommentsList';
 
 const Home = () => {
+    const history = useHistory();
     const { data: issues, isPending, error } = useFetch('/issues');
     const { data: comment, isPending: comPending, error: errCom } = useFetch('/system/comments');
     const [nU, setnU] = useState(null);

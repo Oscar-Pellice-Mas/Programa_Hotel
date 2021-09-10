@@ -3,6 +3,7 @@ import Home from "./Home/Home";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LogIn from "./Common/LogIn";
 import NewIssueView from "./Issues/NewIssueView";
+import Historic from "./Historic/Historic";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
             </Route>
             <Route exact path="/newIssue">
               <NewIssueView />
+            </Route>
+            <Route exact path="/historic">
+              <Historic />
             </Route>
           </Switch>
         </div>
